@@ -27,6 +27,11 @@ public class AdditionController implements Initializable
 	
     @FXML
 	private Button addAction;
+    
+    
+    @FXML
+    private Label ResultErrorHandle;
+
 	
 	private AdditionModel model;
 	
@@ -43,6 +48,7 @@ public class AdditionController implements Initializable
 	public void initialize(URL location, ResourceBundle resources)
 	{
 		model=new AdditionModel();
+		
 
 
 		
@@ -55,19 +61,23 @@ public class AdditionController implements Initializable
 		String number1 = num1Text.getText();
 		String number2 = num2Text.getText();
 		
-		if(!number1.matches("^\\d*\\.\\d+|\\d+\\.\\d*$") || !number2.matches("^\\d*\\.\\d+|\\d+\\.\\d*$"))
+		
+		try
 		{
-			resultLabel.setText("use two non-negative decimals: 9.0 + 9.0");
+			Double n1 = Double.parseDouble(num1Text.getText());
+			Double n2 = Double.parseDouble(num2Text.getText());
+		
+			model.setNum1(n1);
+			model.setNum2(n2);
+		
+			model.detlaAddition();
 		}
-		
-		Double n1 = Double.parseDouble(num1Text.getText());
-		Double n2 = Double.parseDouble(num2Text.getText());
-		
-		model.setNum1(n1);
-		model.setNum2(n2);
-		
-		model.detlaAddition();
-		
+		catch(Exception e)
+		{
+			ResultErrorHandle.setText("use two decimals");
+			System.out.println("Change Format");
+			e.printStackTrace();
+		}
 		
 		
 	}

@@ -80,6 +80,7 @@ public class AdditionModel
 	 */
 	public void setNum2(Double num2) 
 	{
+		
 		this.num2 = num2;
 	}
 	
