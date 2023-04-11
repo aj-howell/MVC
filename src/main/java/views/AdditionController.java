@@ -26,7 +26,7 @@ public class AdditionController implements Initializable
     private Label resultLabel;
 	
     @FXML
-	private Button addAction;
+	private Button addButton;
     
     
     @FXML
@@ -39,8 +39,7 @@ public class AdditionController implements Initializable
 	{
 		this.model=Model;
 		StringConverter<Number> conv = new NumberStringConverter();
-		Bindings.bindBidirectional(resultLabel.textProperty(), model.getResult(),conv);
-		
+		Bindings.bindBidirectional(resultLabel.textProperty(), model.getResult(),conv);	
 		
 	}
 	
@@ -74,7 +73,7 @@ public class AdditionController implements Initializable
 		}
 		catch(Exception e)
 		{
-			ResultErrorHandle.setText("use two decimals");
+			ResultErrorHandle.setText("Error: Decimal Format");
 			System.out.println("Change Format");
 			e.printStackTrace();
 		}

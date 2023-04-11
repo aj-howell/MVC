@@ -13,6 +13,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) throws Exception 
 	{
+		//set up fxml loader,its path, contents inside border pane
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/views/addition-view.fxml"));
 		
@@ -21,10 +22,12 @@ public class Main extends Application {
 		Scene s = new Scene(view);
 		stage.setScene(s);
 		
+		//get correct controller
 		AdditionController controller = loader.getController();
 		AdditionModel model= new AdditionModel();
 		controller.setModel(model);
 		
+		//display
 		stage.show();
 
 	}
